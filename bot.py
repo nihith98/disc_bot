@@ -29,13 +29,14 @@ async def on_member_join(member):
 @client.event
 async def on_message(message):
     if message.author == client.user:
-        return
+        return 
     if message.content.lower() == 'no u':
         await message.channel.send('no u')
     elif 'cancer' in message.content.lower():
         user = message.author
         resp = 'Cancer ah pannadha da <@'+str(user.id)+'>'
         await message.channel.send(resp)
+    
 
 
 client.run(TOKEN)
