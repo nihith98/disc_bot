@@ -36,7 +36,15 @@ async def on_message(message):
         user = message.author
         resp = 'Cancer ah pannadha da <@'+str(user.id)+'>'
         await message.channel.send(resp)
-    
+    elif message.content == 'raise-exception':
+        raise discord.DiscordException
 
+@client.event
+async def on_error(event, *args, **kwargs):
+    with open('err.log', 'a') as f:
+        if event == 'on_message':
+            f.write(f'Unhandled message: {args[0]}\n')
+        else:
+            raise
 
 client.run(TOKEN)
