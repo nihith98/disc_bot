@@ -2,16 +2,18 @@ import os
 
 import discord
 from dotenv import load_dotenv
+from discord.ext import commands
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('GUILD_NAME')
-client = discord.Client()
+bot = commands.Bot(command_prefix='bb')
 
-@client.event
+
+@bot.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
-    for guild in client.guilds:
+    print(f'{bot.user.name} has connected to Discord!')
+    for guild in bot.guilds:
         if guild.name == GUILD:
             break
     print(guild.name)
@@ -20,15 +22,15 @@ async def on_ready():
     members = '\n'.join([member.name for member in guild.members])
     print(members)
 
-@client.event
+@bot.event
 async def on_member_join(member):
     str = 'Welcome to the Bilal OG '+member.name
-    await member.create_dm()
-    await member.dm_channel.send(str)
+    member.create_dm()
+    member.dm_channel.send(str)
 
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == bot.user:
         return 
     if message.content.lower() == 'no u':
         await message.channel.send('no u')
@@ -37,14 +39,20 @@ async def on_message(message):
         resp = 'Cancer ah pannadha da <@'+str(user.id)+'>'
         await message.channel.send(resp)
     elif message.content == 'raise-exception':
+        await message.channel.send('Exception acknowledged')
         raise discord.DiscordException
 
-@client.event
+
+@bot.event
 async def on_error(event, *args, **kwargs):
-    with open('err.log', 'a') as f:
+    print(1)
+    with open('E:\Hobby_Project\Disc_Bots\Bilal\err.log', 'a') as f:
+        print(2)
         if event == 'on_message':
-            f.write(f'Unhandled message: {args[0]}\n')
+            print(3)
+            f.write(f'Unhandled message: {args[0]}\n \n')
         else:
+            print(4)
             raise
 
-client.run(TOKEN)
+bot.run(TOKEN)
