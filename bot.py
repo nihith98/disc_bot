@@ -4,6 +4,9 @@ import discord
 from dotenv import load_dotenv
 from discord.ext import commands
 
+#Bilal Imports
+import noobhi
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('GUILD_NAME')
@@ -38,9 +41,15 @@ async def on_message(message):
         user = message.author
         resp = 'Cancer ah pannadha da <@'+str(user.id)+'>'
         await message.channel.send(resp)
+    elif message.content.lower() == 'praise noobhi':
+        t = noobhi.random_title()
+        await message.channel.send(t)
     elif message.content == 'raise-exception':
         await message.channel.send('Exception acknowledged')
         raise discord.DiscordException
+
+    
+
 
 
 @bot.event
