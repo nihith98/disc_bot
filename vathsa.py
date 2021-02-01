@@ -5,7 +5,7 @@ import bilalUtil as bu
 
 ##Make vathsa rain money randomly
 def rainMoney():
-    if random.SystemRandom().randint(0,20) == 5:
+    if random.SystemRandom().randint(0,3) == 1:
         text = ""
         for i in range(0,random.SystemRandom().randint(1,10)):
             if bu.trueOrFalse():
