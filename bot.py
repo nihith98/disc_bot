@@ -1,11 +1,19 @@
+##Generic Imports
 import os
 
+##Discord Imports
 import discord
-from dotenv import load_dotenv
+import youtube_dl
 from discord.ext import commands
 
 #Bilal Imports
 import noobhi
+import vathsa
+
+##BilalUtil Imports
+import bilalUtil as bu
+import isUser as iu
+from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -15,7 +23,7 @@ bot = commands.Bot(command_prefix='bb')
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user.name} has connected to Discord!')
+    print(f'{bot.user.name} Bot has connected to Discord!')
     for guild in bot.guilds:
         if guild.name == GUILD:
             break
@@ -33,21 +41,39 @@ async def on_member_join(member):
 
 @bot.event
 async def on_message(message):
+    
+    user = message.author
+    
+    ##Prevents infinite loop
     if message.author == bot.user:
         return 
-    if message.content.lower() == 'no u':
+    
+    ##No u max 
+    if message.content.lower() == 'no u': 
         await message.channel.send('no u')
+    
+    ## Cancer ah Pannadha da @User
     elif 'cancer' in message.content.lower():
-        user = message.author
+        
         resp = 'Cancer ah pannadha da <@'+str(user.id)+'>'
+        print(str(user.id))
         await message.channel.send(resp)
+
+    ##Praise Noobhi with random title 
     elif message.content.lower() == 'praise noobhi':
         t = noobhi.random_title()
         await message.channel.send(t)
+
+    ##Rain Money when vathsa types
+    elif iu.isVathsa(user.name):
+        text = vathsa.rainMoney()
+        await message.channel.send(text)
+
+    ##Exception and Logging test
     elif message.content == 'raise-exception':
         await message.channel.send('Exception acknowledged')
         raise discord.DiscordException
-
+    
     
 
 
@@ -62,6 +88,6 @@ async def on_error(event, *args, **kwargs):
             f.write(f'Unhandled message: {args[0]}\n \n')
         else:
             print(4)
-            raise
+            
 
 bot.run(TOKEN)
