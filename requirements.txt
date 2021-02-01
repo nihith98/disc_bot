@@ -12,8 +12,7 @@ colorama            ==      0.4.3
 decorator         ==        4.4.2                      
 defusedxml      ==          0.6.0                      
 discord-py    ==            1.4.1 
-entrypoints ==              0.3                      
-git       ==                2.23.0               
+entrypoints ==              0.3                                   
 heroku  ==                  0.1.4 
 icu                    ==   58.2                 
 idna                  ==    2.10  
