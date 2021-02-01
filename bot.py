@@ -1,5 +1,6 @@
 ##Generic Imports
 import os
+from decouple import config
 
 ##Discord Imports
 import discord
@@ -16,10 +17,9 @@ import isUser as iu
 from dotenv import load_dotenv
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('GUILD_NAME')
+TOKEN = config('DISCORD_TOKEN')
+GUILD = config('GUILD_NAME')
 bot = commands.Bot(command_prefix='bb')
-
 
 @bot.event
 async def on_ready():
@@ -73,10 +73,6 @@ async def on_message(message):
     elif message.content == 'raise-exception':
         await message.channel.send('Exception acknowledged')
         raise discord.DiscordException
-    
-    
-
-
 
 @bot.event
 async def on_error(event, *args, **kwargs):
