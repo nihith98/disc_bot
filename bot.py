@@ -14,9 +14,7 @@ import vathsa
 ##BilalUtil Imports
 import bilalUtil as bu
 import isUser as iu
-from dotenv import load_dotenv
 
-load_dotenv()
 TOKEN = environ.get('DISCORD_TOKEN')
 GUILD = environ.get('GUILD_NAME')
 bot = commands.Bot(command_prefix='bb')
