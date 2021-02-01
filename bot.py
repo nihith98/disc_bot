@@ -1,10 +1,10 @@
 ##Generic Imports
-import os
-from decouple import config
+from os import environ
+from decouple import config ##requirements.txt
 
 ##Discord Imports
-import discord
-import youtube_dl
+import discord ##requirements.txt
+import youtube_dl ##requirements.txt
 from discord.ext import commands
 
 #Bilal Imports
@@ -17,8 +17,8 @@ import isUser as iu
 from dotenv import load_dotenv
 
 load_dotenv()
-TOKEN = config('DISCORD_TOKEN')
-GUILD = config('GUILD_NAME')
+TOKEN = environ.get('DISCORD_TOKEN')
+GUILD = environ.get('GUILD_NAME')
 bot = commands.Bot(command_prefix='bb')
 
 @bot.event
