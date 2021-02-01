@@ -18,9 +18,7 @@ importlib_metadata ==       1.7.0
 ipython_genutils       ==   0.2.0                    
 ipywidgets           ==     7.5.1                      
 isort              ==       5.5.3                    
-jedi                     == 0.17.2                   
-jinja2                   == 2.11.2                     
-jpeg                     == 9b                  
+jedi                     == 0.17.2                                  
 jsonschema               == 3.2.0                    
 jupyter                ==   1.0.0                   
 jupyter_client       ==     6.1.6                      
