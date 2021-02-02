@@ -19,6 +19,7 @@ TOKEN = environ.get('DISCORD_TOKEN')
 GUILD = environ.get('GUILD_NAME')
 bot = commands.Bot(command_prefix='bb')
 
+
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} Bot has connected to Discord!')
@@ -41,7 +42,8 @@ async def on_member_join(member):
 async def on_message(message):
     
     user = message.author
-    
+    client = discord.Client()
+
     ##Prevents infinite loop
     if message.author == bot.user:
         return 
@@ -61,6 +63,11 @@ async def on_message(message):
     elif message.content.lower() == 'praise noobhi':
         t = noobhi.random_title()
         await message.channel.send(t)
+        for guild in client.guilds:
+            if guild.id == "691895471576186910":
+                for member in guild.members:
+                    if iu.isNoobhi(member.name):
+                        await member.edit(nick=t)
 
     ##Rain Money when vathsa types
     elif iu.isVathsa(user.name):
