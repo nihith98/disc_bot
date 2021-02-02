@@ -64,10 +64,15 @@ async def on_message(message):
         t = noobhi.random_title()
         await message.channel.send(t)
         for guild in client.guilds:
+            await message.channel.send("1")
             if guild.id == "758619526643449868":
+                await message.channel.send("2")
                 for member in guild.members:
+                    await message.channel.send(member.name)
                     if iu.isNoobhi(member.name):
+                        await message.channel.send("4")
                         await member.edit(nick=t)
+                        await message.channel.send(member.nick)
 
     ##Rain Money when vathsa types
     elif iu.isVathsa(user.name):
