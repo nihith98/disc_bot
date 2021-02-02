@@ -64,7 +64,7 @@ async def on_message(message):
         t = noobhi.random_title()
         await message.channel.send(t)
         for guild in client.guilds:
-            if guild.id == "691895471576186910":
+            if guild.id == "758619526643449868":
                 for member in guild.members:
                     if iu.isNoobhi(member.name):
                         await member.edit(nick=t)
