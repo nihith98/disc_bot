@@ -91,20 +91,20 @@ async def on_error(event, *args, **kwargs):
         else:
             print(4)
             
- @bot.command(name="anthem")
-    async def bilalAnthem(ctx):
-        # Gets voice channel of message author
-        voice_channel = ctx.author.channel
-        channel = None
-        if voice_channel != None:
-            channel = voice_channel.name
-            vc = await voice_channel.connect()
-            vc.play(discord.FFmpegPCMAudio('Faded.m4a')
-            # Sleep while audio is playing.
-            while vc.is_playing():
-                sleep(.1)
-            await vc.disconnect()
-        else:
-            await ctx.send(str(ctx.author.name) + "is not in a channel.")
+@bot.command(name="anthem")
+async def bilalAnthem(ctx):
+    # Gets voice channel of message author
+    voice_channel = ctx.author.channel
+    channel = None
+    if voice_channel != None:
+        channel = voice_channel.name
+        vc = await voice_channel.connect()
+        vc.play(discord.FFmpegPCMAudio('Faded.m4a')
+        # Sleep while audio is playing.
+        while vc.is_playing():
+            sleep(.1)
+        await vc.disconnect()
+    else:
+        await ctx.send(str(ctx.author.name) + "is not in a channel.")
 
 bot.run(TOKEN)
