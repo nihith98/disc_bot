@@ -92,19 +92,31 @@ async def on_error(event, *args, **kwargs):
             print(4)
             
 @bot.command(name="anthem")
-async def bilalAnthem(ctx):
+async def bilalAnthem():
     # Gets voice channel of message author
     voice_channel = ctx.author.channel
+    print(voice_channel)
     channel = None
     if voice_channel != None:
         channel = voice_channel.name
+        print(channel)
         vc = await voice_channel.connect()
+        print(vc)
         vc.play(discord.FFmpegPCMAudio('/app/Alarm.mp3'))
+        print("Playing Anthem")
         # Sleep while audio is playing.
         while vc.is_playing():
             sleep(.1)
+            print("isPlaying() is true")
         await vc.disconnect()
     else:
         await ctx.send(str(ctx.author.name) + "is not in a channel.")
+        print()
+
+
+@bot.command(name="Hi")
+async def sayHi():
+    print("Hi")
+
 
 bot.run(TOKEN)
