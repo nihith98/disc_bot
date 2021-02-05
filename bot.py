@@ -17,7 +17,7 @@ import isUser as iu
 
 TOKEN = environ.get('DISCORD_TOKEN')
 GUILD = environ.get('GUILD_NAME')
-bot = commands.Bot(command_prefix='bb')
+bot = commands.Bot(command_prefix='%')
 
 
 @bot.event
@@ -115,7 +115,7 @@ async def bilalAnthem():
 
 
 @bot.command(name="Hi")
-async def sayHi():
+async def sayHi(ctx):
     print("Hi")
 
 
