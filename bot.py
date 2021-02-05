@@ -99,7 +99,7 @@ async def bilalAnthem(ctx):
     if voice_channel != None:
         channel = voice_channel.name
         vc = await voice_channel.connect()
-        vc.play(discord.FFmpegPCMAudio('Faded.m4a'))
+        vc.play(discord.FFmpegPCMAudio('/app/Faded.m4a'))
         # Sleep while audio is playing.
         while vc.is_playing():
             sleep(.1)
