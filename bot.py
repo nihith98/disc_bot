@@ -22,24 +22,20 @@ bot = commands.Bot(command_prefix='%')
 @bot.command(pass_context=True)
 async def bilalAnthem(ctx):
     # Gets voice channel of message author
-    voice_channel = ctx.message.author.voice.voice_channel
-    print(voice_channel)
-    channel = None
-    if voice_channel != None:
-        channel = voice_channel.name
-        print(channel)
-        vc = await voice_channel.connect()
-        print(vc)
-        vc.play(discord.FFmpegPCMAudio('/app/Alarm.mp3'))
-        print("Playing Anthem")
+    
+    if ctx.voice_client is None:
+        if ctx.author.voice:
+            await ctx.author.voice.channel.connect()
+            vc.play(discord.FFmpegPCMAudio('/app/Alarm.mp3'))
+            print("Playing Anthem")
         # Sleep while audio is playing.
-        while vc.is_playing():
-            sleep(.1)
-            print("isPlaying() is true")
-        await vc.disconnect()
-    else:
-        await ctx.send(str(ctx.author.name) + "is not in a channel.")
-        print()
+            while vc.is_playing():
+                sleep(.1)
+                print("isPlaying() is true")
+            await vc.disconnect()
+        else:
+            await ctx.send(str(ctx.author.name) + "is not in a channel.")
+            print("False")
 
 
 @bot.command(pass_context=True)
