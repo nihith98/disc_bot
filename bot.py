@@ -91,8 +91,8 @@ async def on_error(event, *args, **kwargs):
         else:
             print(4)
             
-@bot.command(name="anthem")
-async def bilalAnthem():
+@bot.command()
+async def bilalAnthem(ctx):
     # Gets voice channel of message author
     voice_channel = ctx.author.channel
     print(voice_channel)
@@ -114,7 +114,7 @@ async def bilalAnthem():
         print()
 
 
-@bot.command(name="Hi")
+@bot.command()
 async def sayHi(ctx):
     print("Hi")
 
