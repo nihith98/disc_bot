@@ -17,6 +17,7 @@ import isUser as iu
 
 TOKEN = environ.get('DISCORD_TOKEN')
 GUILD = environ.get('GUILD_NAME')
+FFMPEG_PATH = environ.get('FFMPEG_PATH')
 bot = commands.Bot(command_prefix='%')
 
 @bot.command(pass_context=True)
