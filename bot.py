@@ -32,7 +32,7 @@ async def bilalAnthem(ctx):
             print("Playing Anthem")
         # Sleep while audio is playing.
             while ctx.voice_client.is_playing():
-                sleep(.1)
+                sleep(3)
                 print("isPlaying() is true")
             await ctx.voice_client.disconnect()
         else:
