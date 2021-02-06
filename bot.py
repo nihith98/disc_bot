@@ -19,7 +19,7 @@ TOKEN = environ.get('DISCORD_TOKEN')
 GUILD = environ.get('GUILD_NAME')
 bot = commands.Bot(command_prefix='%')
 
-@bot.command()
+@commands.command()
 async def bilalAnthem(ctx):
     # Gets voice channel of message author
     voice_channel = ctx.author.channel
@@ -42,7 +42,7 @@ async def bilalAnthem(ctx):
         print()
 
 
-@bot.command()
+@commands.command()
 async def sayHi(ctx):
     await ctx.send(str(ctx.author.name) + "is not in a channel.")
     print("Hi")
