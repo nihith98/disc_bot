@@ -26,13 +26,13 @@ async def bilalAnthem(ctx):
     if ctx.voice_client is None:
         if ctx.author.voice:
             await ctx.author.voice.channel.connect()
-            vc.play(discord.FFmpegPCMAudio('/app/Alarm.mp3'))
+            ctx.voice_client.play(discord.FFmpegPCMAudio('/app/Alarm.mp3'))
             print("Playing Anthem")
         # Sleep while audio is playing.
-            while vc.is_playing():
+            while ctx.voice_client.is_playing():
                 sleep(.1)
                 print("isPlaying() is true")
-            await vc.disconnect()
+            await ctx.voice_client.disconnect()
         else:
             await ctx.send(str(ctx.author.name) + "is not in a channel.")
             print("False")
