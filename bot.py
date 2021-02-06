@@ -107,6 +107,8 @@ async def on_message(message):
         await message.channel.send('Exception acknowledged')
         raise discord.DiscordException
 
+    await bot.process_commands(message)
+
 @bot.event
 async def on_error(event, *args, **kwargs):
     print(1)
