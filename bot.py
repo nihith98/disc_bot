@@ -22,7 +22,7 @@ bot = commands.Bot(command_prefix='%')
 @bot.command(pass_context=True)
 async def bilalAnthem(ctx):
     # Gets voice channel of message author
-    voice_channel = ctx.author.channel
+    voice_channel = ctx.message.author.voice.voice_channel
     print(voice_channel)
     channel = None
     if voice_channel != None:
