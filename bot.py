@@ -19,6 +19,33 @@ TOKEN = environ.get('DISCORD_TOKEN')
 GUILD = environ.get('GUILD_NAME')
 bot = commands.Bot(command_prefix='%')
 
+@bot.command()
+async def bilalAnthem(ctx):
+    # Gets voice channel of message author
+    voice_channel = ctx.author.channel
+    print(voice_channel)
+    channel = None
+    if voice_channel != None:
+        channel = voice_channel.name
+        print(channel)
+        vc = await voice_channel.connect()
+        print(vc)
+        vc.play(discord.FFmpegPCMAudio('/app/Alarm.mp3'))
+        print("Playing Anthem")
+        # Sleep while audio is playing.
+        while vc.is_playing():
+            sleep(.1)
+            print("isPlaying() is true")
+        await vc.disconnect()
+    else:
+        await ctx.send(str(ctx.author.name) + "is not in a channel.")
+        print()
+
+
+@bot.command()
+async def sayHi(ctx):
+    await ctx.send(str(ctx.author.name) + "is not in a channel.")
+    print("Hi")
 
 @bot.event
 async def on_ready():
@@ -90,33 +117,6 @@ async def on_error(event, *args, **kwargs):
             f.write(f'Unhandled message: {args[0]}\n \n')
         else:
             print(4)
-            
-@bot.command()
-async def bilalAnthem(ctx):
-    # Gets voice channel of message author
-    voice_channel = ctx.author.channel
-    print(voice_channel)
-    channel = None
-    if voice_channel != None:
-        channel = voice_channel.name
-        print(channel)
-        vc = await voice_channel.connect()
-        print(vc)
-        vc.play(discord.FFmpegPCMAudio('/app/Alarm.mp3'))
-        print("Playing Anthem")
-        # Sleep while audio is playing.
-        while vc.is_playing():
-            sleep(.1)
-            print("isPlaying() is true")
-        await vc.disconnect()
-    else:
-        await ctx.send(str(ctx.author.name) + "is not in a channel.")
-        print()
-
-
-@bot.command()
-async def sayHi(ctx):
-    print("Hi")
 
 
 bot.run(TOKEN)
