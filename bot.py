@@ -50,11 +50,10 @@ async def on_ready():
     print(f'{bot.user.name} Bot has connected to Discord!')
     for guild in bot.guilds:
         if guild.name == GUILD:
-            break
-    print(guild.name)
-    print(guild.id)
-    for member in guild.members:
-        print(member)
+            print(guild.name)
+            print(guild.id)
+            for member in guild.members:
+                print(member)
 
     members = '\t'.join([member.name for member in guild.members])
     print(members)
