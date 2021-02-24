@@ -53,7 +53,9 @@ async def on_ready():
             break
     print(guild.name)
     print(guild.id)
-    print([guild.members])
+    for member in guild.members:
+        print(member)
+
     members = '\t'.join([member.name for member in guild.members])
     print(members)
 
