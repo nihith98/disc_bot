@@ -53,8 +53,8 @@ async def on_ready():
             break
     print(guild.name)
     print(guild.id)
-
-    members = '\n'.join([member.name for member in guild.members])
+    print([guild.members])
+    members = '\t'.join([member.name for member in guild.members])
     print(members)
 
 @bot.event
