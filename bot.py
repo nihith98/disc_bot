@@ -21,29 +21,6 @@ GUILD = environ.get('GUILD_NAME')
 FFMPEG_PATH = environ.get('FFMPEG_PATH')
 bot = commands.Bot(command_prefix='%')
 
-@bot.command(pass_context=True)
-async def bilalAnthem(ctx):
-    # Gets voice channel of message author
-    
-    if ctx.voice_client is None:
-        if ctx.author.voice:
-            await ctx.author.voice.channel.connect()
-            ctx.voice_client.play(discord.FFmpegPCMAudio('/app/Alarm.mp3'))
-            print("Playing Anthem")
-        # Sleep while audio is playing.
-            while ctx.voice_client.is_playing():
-                sleep(3)
-                print("isPlaying() is true")
-            await ctx.voice_client.disconnect()
-        else:
-            await ctx.send(str(ctx.author.name) + "is not in a channel.")
-            print("False")
-
-
-@bot.command(pass_context=True)
-async def sayHi(ctx):
-    await ctx.send(str(ctx.author.name) + "is not in a channel.")
-    print("Hi")
 
 @bot.event
 async def on_ready():
